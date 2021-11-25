@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types'
 import * as array from 'd3-array'
 import * as scale from 'd3-scale'
 import * as shape from 'd3-shape'
+import PropTypes from 'prop-types'
 import BarChart from './bar-chart'
 
 class GroupedBarChart extends BarChart {
@@ -124,7 +124,13 @@ class GroupedBarChart extends BarChart {
                             )
                             .y0(y(0))
                             .y1((value) => y(value))
-                            .defined((value) => typeof value === 'number')([item.value, item.value]),
+                            .defined((value) => typeof value === 'number')([item.value, item.value])
+                            .arc({
+                                innerRadius: 100,
+                                outerRadius: 100,
+                                startAngle: 0,
+                                endAngle: Math.PI / 2
+                            }),
                     })
                 })
             })

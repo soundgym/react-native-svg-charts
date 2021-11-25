@@ -100,7 +100,12 @@ class BarChart extends PureComponent {
                 .y0(y(0))
                 .y1((value) => y(value))
                 .x((value, _index) => (_index === 0 ? x(index) : x(index) + x.bandwidth()))
-                .defined((value) => typeof value === 'number')([values[index], values[index]]),
+                .defined((value) => typeof value === 'number')([values[index], values[index]]).arc({
+                    innerRadius: 100,
+                    outerRadius: 100,
+                    startAngle: 0,
+                    endAngle: Math.PI / 2
+                }),
         }))
     }
 
